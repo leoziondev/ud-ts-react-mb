@@ -1,5 +1,5 @@
 import React from 'react';
-import Destructuring from './components/Destructuring';
+import Destructuring, { Category } from './components/Destructuring';
 import FirstComponent from './components/FirstComponent';
 import SecondComponent from './components/SecondComponent';
 import State from './components/State';
@@ -9,13 +9,15 @@ const posts = [
     title: "Primeiro Post",
     content: "Lorem Ipsum dollor sit amet",
     comments: 10,
-    tags: ["ts", "js"]
+    tags: ["ts", "js"],
+    cat: Category.JS
   },
   {
     title: "Segundo Post",
     content: "Lorem Ipsum dollor sit amet",
     comments: 5,
-    tags: ["react", "react-native"]
+    tags: ["react", "react-native"],
+    cat: Category.TS
   },
 ]
 
@@ -47,6 +49,7 @@ function App() {
           content={post.content}
           commentsQty={post.comments}
           tags={post.tags}
+          category={post.cat}
         />
       ))}
       <State />
