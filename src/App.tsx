@@ -1,5 +1,22 @@
 import React from 'react';
+import Destructuring from './components/Destructuring';
 import FirstComponent from './components/FirstComponent';
+import SecondComponent from './components/SecondComponent';
+
+const posts = [
+  {
+    title: "Primeiro Post",
+    content: "Lorem Ipsum dollor sit amet",
+    comments: 10,
+    tags: ["ts", "js"]
+  },
+  {
+    title: "Segundo Post",
+    content: "Lorem Ipsum dollor sit amet",
+    comments: 5,
+    tags: ["react", "react-native"]
+  },
+]
 
 function App() {
   const name: string = "Jhon Doe"
@@ -21,6 +38,16 @@ function App() {
         <div><p>Yeeee, is working!</p></div>
       )}
       <FirstComponent />
+      <SecondComponent name="Second" />
+      {posts.map((post, i) => (
+        <Destructuring
+          key={i}
+          title={post.title}
+          content={post.content}
+          commentsQty={post.comments}
+          tags={post.tags}
+        />
+      ))}
     </div>
   );
 }
