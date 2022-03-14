@@ -21,10 +21,20 @@ const posts = [
   },
 ]
 
+type textOrNull = string | null
+type fixed = "Isso" | "ou" | "aquilo"
+
 function App() {
   const name: string = "Jhon Doe"
   const age: number = 32
   const isWorking: boolean = true
+
+  const myText: textOrNull = "Tem algum texto aqui"
+  let mySecondText: textOrNull = null
+
+  const testFixed: fixed = "aquilo"
+
+  // mySecondText = 15
 
   const userGreeting = (name: string): string => {
     return `Bem vindo de volta ${name}!`
@@ -53,6 +63,8 @@ function App() {
         />
       ))}
       <State />
+      {myText && <p>Tem texto aqui</p>}
+      {mySecondText && <p>Tem texto aqui</p>}
     </div>
   );
 }
