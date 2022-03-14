@@ -2,6 +2,7 @@ import React from 'react';
 import Destructuring from './components/Destructuring';
 import FirstComponent from './components/FirstComponent';
 import SecondComponent from './components/SecondComponent';
+import State from './components/State';
 
 const posts = [
   {
@@ -48,6 +49,7 @@ function App() {
           tags={post.tags}
         />
       ))}
+      <State />
     </div>
   );
 }
