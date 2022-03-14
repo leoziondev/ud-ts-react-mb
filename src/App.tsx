@@ -1,8 +1,11 @@
 import React from 'react';
+import { AppContext, IAppContext } from './context/AppContext'
+
 import Destructuring, { Category } from './components/Destructuring';
 import FirstComponent from './components/FirstComponent';
 import SecondComponent from './components/SecondComponent';
 import State from './components/State';
+import Context from './components/Context';
 
 const posts = [
   {
@@ -40,32 +43,42 @@ function App() {
     return `Bem vindo de volta ${name}!`
   }
 
-  return (
-    <div className="App">
-      <h1>React com Typescript</h1>
+  const contextValue: IAppContext = {
+    language: "JavaScript",
+    framework: "Express",
+    projects: 5,
+  }
 
-      <h2>Nome: {name}</h2>
-      <h3>{userGreeting(name)}</h3>
-      <p>Idade: {age}</p>
-      {isWorking && (
-        <div><p>Yeeee, is working!</p></div>
-      )}
-      <FirstComponent />
-      <SecondComponent name="Second" />
-      {posts.map((post, i) => (
-        <Destructuring
-          key={i}
-          title={post.title}
-          content={post.content}
-          commentsQty={post.comments}
-          tags={post.tags}
-          category={post.cat}
-        />
-      ))}
-      <State />
-      {myText && <p>Tem texto aqui</p>}
-      {mySecondText && <p>Tem texto aqui</p>}
-    </div>
+  return (
+    <AppContext.Provider value={contextValue}>
+      <div className="App">
+        <h1>React com Typescript</h1>
+  
+        <h2>Nome: {name}</h2>
+        <h3>{userGreeting(name)}</h3>
+        <p>Idade: {age}</p>
+        {isWorking && (
+          <div><p>Yeeee, is working!</p></div>
+        )}
+        <FirstComponent />
+        <SecondComponent name="Second" />
+        {posts.map((post, i) => (
+          <Destructuring
+            key={i}
+            title={post.title}
+            content={post.content}
+            commentsQty={post.comments}
+            tags={post.tags}
+            category={post.cat}
+          />
+        ))}
+        <State />
+        {myText && <p>Tem texto aqui</p>}
+        {mySecondText && <p>Tem texto aqui</p>}
+
+        <Context />
+      </div>
+    </AppContext.Provider>
   );
 }
 
